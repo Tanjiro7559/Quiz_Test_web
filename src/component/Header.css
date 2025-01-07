@@ -17,8 +17,9 @@ body {
 
 .left-info span,
 .right-info span {
-  margin-right: 20px;
-  font-size: 14px;
+  margin-right: 10px;
+  margin-left: 20px;
+  font-size: 12px;
 }
 
 .right-info {
@@ -49,13 +50,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
- 
-  margin-left: 80px; /* Adjust as needed */
+  margin-left: 100px; /* Adjust as needed */
   margin-right: 80px;
 }
 
 .logo-image {
-  height: 50px;
+  height: 30px;
 }
 
 .nav {
@@ -74,6 +74,7 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
+  margin-left: 400px;
 }
 
 .search-bar {
@@ -129,4 +130,42 @@ body {
 
 .sign-up-btn:hover {
   background: #ff8800;
+}
+/* Modal Background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: auto;
+  max-width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Close button style */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: red;
 }

@@ -2,19 +2,26 @@
 .hero {
   display: flex;
   justify-content: space-between;
-  padding: 40px;
   background: #f9f9f9;
-  margin: 100px;
   position: relative; /* For positioning the circles */
+  background-image: url('../assets/HeroSectionBgImg.png'); /* Corrected syntax */
+  background-size: cover; /* Makes the background image cover the entire section */
+  background-repeat: no-repeat; /* Ensures the image does not repeat */
+  background-position: center; /* Centers the image */
+  margin: auto;
+  height: 100vh;
 }
 
+
 .hero-content {
-  max-width: 50%;
+  max-width: 30%;
   text-align: left;
+  padding: 120px;
 }
 
 .hero-content h1 {
   font-size: 36px;
+  width: 500px;
 }
 
 .button-group {
@@ -41,7 +48,13 @@
 }
 
 .hero-image img {
-  max-width: 300px;
+  max-width: 500px; /* Limits the width */
+  width: 500px;      /* Ensures responsiveness */
+  height: 500px;     /* Maintains the aspect ratio */
+  object-fit: contain; /* Ensures the image fits within the bounding box */
+  padding-right: 140px;
+  top: -2%;
+  left: 0%;
 }
 
 /* Circular Background Styles */
@@ -49,39 +62,42 @@
   position: absolute;
   width: 80px;
   height: 80px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
+  background-size: contain; 
+  background-position: center; 
+  background-repeat: no-repeat; 
   opacity: 0.8;
+  border-radius: 50%; /* Keeps the circular shape */
 }
 
 .circle-1 {
   top: 10%;
-  left: 5%;
-  background-image: url("../assets/Group.png");
+  left: 0%;
+  background-image: url("../assets/Group (2).png");
+  opacity: 0.1;
 }
-
 .circle-2 {
-  top: 20%;
-  right: 10%;
-  background-image: url("../assets/Group.png");
+  top: 5%;
+  left: 10%;
+  background-image: url("../assets/Group (3).png");
+  opacity: 1;
 }
 
 .circle-3 {
   bottom: 30%;
-  left: 10%;
-  background-image: url("../assets/Group.png");
+  left: 0%;
+  background-image: url("../assets/BookImage.png");
 }
 
 .circle-4 {
-  bottom: 20%;
+  top: 8%;
   right: 5%;
-  background-image: url("../assets/Group.png");
+  background-image: url("../assets/Group (5).png");
 }
 
 .circle-5 {
-  top: 40%;
-  left: 50%;
-  background-image: url("../assets/Group.png");
-  transform: translateX(-50%);
+  top: 10%;
+  left: 40%;
+  background-image: url("../assets/Group (4).png");
+  /* transform: translateX(-50%); */
+  opacity: 1;
 }

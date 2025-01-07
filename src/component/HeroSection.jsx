@@ -1,5 +1,6 @@
 import React from "react";
 import "./HeroSection.css";
+import StudentImage from '../assets/studentI_img.png'
 
 function HeroSection() {
   return (
@@ -14,7 +15,8 @@ function HeroSection() {
       <div className="hero-content">
         <h2>EDUCATION SOLUTION</h2>
         <h1>The Ultimate Platform for Concept-Based Learning</h1>
-        <p>Lorem Ipsum is simply dummy text of the printing typesetting industry.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing
+        typesetting industry. Lorem Ipsum has been </p>
         <div className="button-group">
           <button className="signin-btn">Sign In</button>
           <button className="signup-btn">Sign Up</button>
@@ -22,7 +24,7 @@ function HeroSection() {
       </div>
       <div className="hero-image">
         <img
-          src="https://via.placeholder.com/400"
+          src={StudentImage}
           alt="Student"
           className="student-img"
         />

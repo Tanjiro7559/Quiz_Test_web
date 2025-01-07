@@ -1,0 +1,167 @@
+General Body Styles
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+  height: 100%; /* Full height for the scroll container */
+  /* overflow: hidden; /* Prevent unwanted overflow }*/
+/* Page Container */
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Scrollable Form Container */
+.signup-container {
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh; /* Ensure the form doesn't exceed the viewport height */
+  overflow-y: auto; /* Allow scrolling within the container */
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.signup-container::-webkit-scrollbar-thumb {
+  background-color:  #ffffff; /* Scrollbar thumb color */
+  border-radius: 4px;
+}
+
+/* Title Styling */
+.signup-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.input-field{
+  margin-top: -9px;
+
+}
+/* Form Layout */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Allows responsiveness */
+}
+
+.form-group {
+  flex: 0.4;
+  min-width: 90px; /* Ensures inputs have a minimum width */
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: -0.5px;
+  color: #555;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Gender and Interest Options */
+.gender-options,
+.interest-options {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gender-options label,
+.interest-options label {
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Terms & Conditions */
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.terms input {
+  margin: 0;
+}
+
+/* Button Styles */
+.btn-create-account {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-create-account:hover {
+  background-color: #218838;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .signup-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-create-account {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
