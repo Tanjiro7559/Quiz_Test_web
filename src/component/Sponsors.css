@@ -1,0 +1,11 @@
+.sponsors {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: #ffffff;
+}
+
+.sponsors img {
+  margin: 0 20px;
+  max-width: 100px;
+}

@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.community-section {
+  background: #f9f9f9;
+  padding: 40px 80px;
+}
+
+/* Sponsors Section */
+.sponsors {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background: #ffffff;
+}
+
+.sponsors img {
+  margin: 0 20px;
+  max-width: 100px;
+}
+
+/* Community Content Section */
+.community-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
+
+/* Student Image Section */
+.community-image-wrapper {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+}
+
+.background-shape {
+  position: absolute;
+  top: -10px; /* Slightly adjust for better alignment */
+  left: -10px; /* Slightly adjust for better alignment */
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+  clip-path: polygon(0 0, 80% 0, 60% 100%, 0 100%);
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.student-img {
+  width: 100%;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Text Content */
+.community-text {
+  max-width: 50%;
+  text-align: left;
+}
+
+.community-text h5 {
+  color: #66c13b;
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.community-text h2 {
+  font-size: 36px;
+  margin: 10px 0;
+  color: #222;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.community-text h3 {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #555;
+}
+
+.community-text p {
+  font-size: 16px;
+  color: #777;
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.demo-btn {
+  background: #ffa500;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+}
+
+.demo-btn:hover {
+  background: #ff8800;
+}

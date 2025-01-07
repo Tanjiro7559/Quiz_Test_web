@@ -1,0 +1,87 @@
+/* General Hero Styles */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  background: #f9f9f9;
+  margin: 100px;
+  position: relative; /* For positioning the circles */
+}
+
+.hero-content {
+  max-width: 50%;
+  text-align: left;
+}
+
+.hero-content h1 {
+  font-size: 36px;
+}
+
+.button-group {
+  margin-top: 20px;
+}
+
+.signin-btn {
+  margin-right: 10px;
+  background-color: #4c6ef5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.signup-btn {
+  background-color: #ffa100;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hero-image img {
+  max-width: 300px;
+}
+
+/* Circular Background Styles */
+.circle {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+
+.circle-1 {
+  top: 10%;
+  left: 5%;
+  background-image: url("../assets/Group.png");
+}
+
+.circle-2 {
+  top: 20%;
+  right: 10%;
+  background-image: url("../assets/Group.png");
+}
+
+.circle-3 {
+  bottom: 30%;
+  left: 10%;
+  background-image: url("../assets/Group.png");
+}
+
+.circle-4 {
+  bottom: 20%;
+  right: 5%;
+  background-image: url("../assets/Group.png");
+}
+
+.circle-5 {
+  top: 40%;
+  left: 50%;
+  background-image: url("../assets/Group.png");
+  transform: translateX(-50%);
+}
