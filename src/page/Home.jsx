@@ -1,19 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import Header from "../component/Header";
 import HeroSection from "../component/HeroSection";
-import CommunitySection from "../component/CommunitySection";
-import LoginPage from '../component/LoginPage'
-import SignupForm from '../component/SignupForm'
 
 function Home() {
+  // Manage login state at the parent level
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div className="Home">
-      <Header />
-      <HeroSection />
-      {/* <LoginPage></LoginPage> */}
-       {/* <CommunitySection></CommunitySection> */}
-       {/* <SignupForm></SignupForm> */}
+      {/* Pass shared state and handlers as props */}
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <HeroSection isLoggedIn={isLoggedIn} />
     </div>
   );
 }

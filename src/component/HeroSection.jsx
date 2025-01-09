@@ -1,8 +1,9 @@
 import React from "react";
 import "./HeroSection.css";
-import StudentImage from '../assets/studentI_img.png'
+import StudentImage from "../assets/studentI_img.png";
 
-function HeroSection() {
+
+function HeroSection({ isLoggedIn }) {
   return (
     <div className="hero">
       {/* Circles */}
@@ -13,21 +14,21 @@ function HeroSection() {
       <div className="circle circle-5"></div>
 
       <div className="hero-content">
-        <h2>EDUCATION SOLUTION</h2>
+        <h2 className="Hero-H2">EDUCATION SOLUTION</h2>
         <h1>The Ultimate Platform for Concept-Based Learning</h1>
-        <p>Lorem Ipsum is simply dummy text of the printing
-        typesetting industry. Lorem Ipsum has been </p>
-        <div className="button-group">
-          <button className="signin-btn">Sign In</button>
-          <button className="signup-btn">Sign Up</button>
-        </div>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing typesetting industry.
+          Lorem Ipsum has been
+        </p>
+        {!isLoggedIn && ( // Conditionally render buttons if the user is not logged in
+          <div className="button-group">
+            <button className="signin-btn">Sign In</button>
+            <button className="signup-btn">Sign Up</button>
+          </div>
+        )}
       </div>
       <div className="hero-image">
-        <img
-          src={StudentImage}
-          alt="Student"
-          className="student-img"
-        />
+        <img src={StudentImage} alt="Student" className="student-img" />
       </div>
     </div>
   );

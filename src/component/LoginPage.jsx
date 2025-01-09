@@ -2,7 +2,17 @@ import React from "react";
 import "./LoginPage.css";
 import LoginLeftsideimage from "../assets/loginImage/Untitled design (1) 3.png";
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
+  const handleLoginSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    // Here, you'd validate user credentials and ensure login success.
+    console.log("User logged in"); // Debugging line
+
+    // Notify parent about the login
+    onLogin();
+  };
+
   return (
     <div className="login-page">
       <div className="login-container">
@@ -18,7 +28,7 @@ const LoginPage = () => {
             <br />
             Welcome back
           </h2>
-          <form>
+          <form onSubmit={handleLoginSubmit}>
             <div className="form-group">
               <input
                 type="text"
@@ -48,8 +58,13 @@ const LoginPage = () => {
           </form>
 
           <div className="register-link">
-            <h4>Not a member yet?</h4>{" "}
-            <button className="sign-up-btn" href="/register">Register Now</button>
+            <h4>Not a member yet?</h4>
+            <button
+              className="sign-up-btn"
+              onClick={() => (window.location.href = "/register")}
+            >
+              Register Now
+            </button>
           </div>
         </div>
       </div>

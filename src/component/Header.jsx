@@ -1,36 +1,83 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Header.css";
-import { FaFacebook } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
-import { IoLogoYoutube } from "react-icons/io";
-import { IoLocationOutline } from "react-icons/io5";
-import LogoImg from '../assets/Logo 4.png';
-import { FaAngleDown } from "react-icons/fa6";
-import SignInPage from './LoginPage'; 
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagramSquare,
+  FaAngleDown,
+} from "react-icons/fa";
+import { IoLogoYoutube, IoLocationOutline } from "react-icons/io5";
+import LogoImg from "../assets/Logo 4.png";
+import profilImage from "../assets/video1 (5) 2.png";
+import SignInPage from "./LoginPage";
 import SignupForm from "./SignupForm";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { FaAngleRight } from "react-icons/fa6";
+import ProfileMenu from "./ProfileMenu";
 
+import NotificationComponent from "./Notification";
 
-function Header() {
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+function Header({ isLoggedIn, setIsLoggedIn }) {
+  // Use props here
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
 
-
-  
   const openModal = () => {
     setIsModalOpen(true);
   };
-
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-  const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
-   const openSignUpModal = () => setSignUpModalOpen(true);
-  const closeSignUpModal = () => setSignUpModalOpen(false);
+  const openSignUpModal = () => {
+    setSignUpModalOpen(true);
+  };
+
+  const closeSignUpModal = () => {
+    setSignUpModalOpen(false);
+  };
+
+  const handleLogin = () => {
+    setIsLoggedIn(true); // Update login state from parent
+    console.log("Login status updated: ", true);
+    closeModal(); // Close the sign-in modal
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const [profileImage, setProfileImage] = useState(profilImage);
+
+  // Handle changing the profile image
+  const handleChangeProfileImage = () => {
+    console.log("Change profile image logic goes here");
+    
+  };
+
+  // Handle logging out
+  const handleLogout = () => {
+    console.log("Logging out");
+  
+  };
+
+  // Handle editing the profile
+  const handleEditProfile = () => {
+    console.log("Navigating to edit profile screen");
+   
+  };
+
+  // Handle contacting support
+  const handleContactSupport = () => {
+    console.log("Opening support contact screen");
+   
+  };
+
   return (
     <header className="header">
-      {/* Top bar */}
       <div className="header-top">
         <div className="left-info">
           <span>Call Us: +1 800 123 456 789</span>
@@ -50,19 +97,34 @@ function Header() {
         </div>
       </div>
 
-      {/* Main bar */}
       <div className="header-main">
         <div className="logo">
-          <img
-            src={LogoImg}
-            alt="Logo"
-            className="logo-image"
-          />
+          <img src={LogoImg} alt="Logo" className="logo-image" />
         </div>
         <div className="nav">
-          <button className="tests-btn">
-            TESTS <FaAngleDown />
-          </button>
+          <div>
+            {/* Button */}
+            <button className="tests-btn" onClick={toggleMenu}>
+              {/* onClick={toggleMenu} */}
+              TESTS <FaAngleDown />
+            </button>
+
+            {/* Dropdown Menu */}
+            {isOpen && (
+              <div className="dropdown-menu">
+                <div className="dropdown-left">
+                  <button>Board </button>
+                  <button>Class</button>
+                  <button>Subject</button>
+                </div>
+                <div className="dropdown-right">
+                  <span>CBSE</span>
+                  <span>Marathi Medium</span>
+                  <span>Hindi Medium</span>
+                </div>
+              </div>
+            )}
+          </div>
           <div className="search-bar">
             <input type="text" placeholder="Search Now" />
             <button>
@@ -71,25 +133,53 @@ function Header() {
           </div>
         </div>
         <div className="auth-buttons">
-          {/* Triggering modal for Sign In */}
-          <button className="sign-in-btn" onClick={openModal}>Sign In</button>
-          <button className="sign-up-btn" onClick={openSignUpModal}>Sign Up</button>
+          {!isLoggedIn ? ( // Conditionally show buttons
+            <>
+              <button className="sign-in-btn" onClick={openModal}>
+                Sign In
+              </button>
+              <button className="sign-up-btn" onClick={openSignUpModal}>
+                Sign Up
+              </button>
+            </>
+          ) : (
+            <div style={{ display: "flex", alignItems: "center" }}>
+              {" "}
+                <div className="notification-container">
+          <NotificationComponent />
+        </div>
+             <div>
+      {/* Pass necessary props to ProfileMenu */}
+      <ProfileMenu
+        initialProfileImage={profileImage}
+        onLogout={handleLogout}
+        onEditProfile={handleEditProfile}
+        onContactSupport={handleContactSupport}
+        onChangeProfileImage={handleChangeProfileImage}
+      />
+    </div>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Modal for Sign In */}
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close-btn" onClick={closeModal}>&times;</span>
-            <SignInPage />
+            <span className="close-btn" onClick={closeModal}>
+              &times;
+            </span>
+            <SignInPage onLogin={handleLogin} />
           </div>
         </div>
       )}
+
       {isSignUpModalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close-btn" onClick={closeSignUpModal}>&times;</span>
+            <span className="close-btn" onClick={closeSignUpModal}>
+              &times;
+            </span>
             <SignupForm />
           </div>
         </div>

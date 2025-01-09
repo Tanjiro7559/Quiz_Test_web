@@ -109,7 +109,7 @@ body {
 .sign-in-btn,
 .sign-up-btn {
   background: none;
-  border: 2px solid #000;
+  border: 1x solid #000;
   padding: 5px 15px;
   font-size: 14px;
   font-weight: bold;
@@ -117,14 +117,17 @@ body {
   cursor: pointer;
 }
 
+.sign-in-btn{
+ border: 1px solid gray;
+}
 .sign-up-btn {
-  background: #ffa500;
+  background: #84C346;
   color: #fff;
   border: none;
 }
 
 .sign-in-btn:hover {
-  background: #000;
+  background: #4D2BB4;
   color: #fff;
 }
 
@@ -168,4 +171,72 @@ body {
 
 .close-btn:hover {
   color: red;
+}
+
+/* Button styles */
+.tests-btn {
+ 
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Dropdown menu container */
+.dropdown-menu {
+  display: flex;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 95px;
+  left: 65%; /* Centers horizontally */
+  transform: translateX(-50%); /* Adjusts the position to truly center it */
+  z-index: 100;
+  width: 700px;
+  height: 300px;
+  border-radius: 5px;
+}
+
+/* Left-side menu */
+.dropdown-left {
+  background-color: #f3f8ff;
+  padding: 10px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.dropdown-left button {
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-left button:hover {
+  color: #f89c00;
+}
+
+/* Right-side menu */
+.dropdown-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10px;
+  gap: 10px;
+}
+
+.dropdown-right span {
+  font-size: 14px;
+  color: #333;
 }

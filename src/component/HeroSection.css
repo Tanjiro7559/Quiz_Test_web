@@ -27,15 +27,18 @@
 .button-group {
   margin-top: 20px;
 }
-
+.Hero-H2{
+  color: #84C346;
+}
 .signin-btn {
   margin-right: 10px;
-  background-color: #4c6ef5;
+  background-color: #4D2BB4;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
+  width: 130px;
 }
 
 .signup-btn {
@@ -45,6 +48,8 @@
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
+  width: 130px;
+  margin-left: 20px;
 }
 
 .hero-image img {
