@@ -1,6 +1,78 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { IoIosNotificationsOutline } from 'react-icons/io';
-import { FaAngleRight } from 'react-icons/fa';
+import React, { useState, useRef, useEffect } from "react";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { FaAngleRight } from "react-icons/fa";
+
+const Notification = ({ title, description, time, isOlder }) => {
+  const titleColor = isOlder ? "gray" : "green";
+  const titleFontWeight = "bold";
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: "8px",
+       
+      }}
+    >
+      <div style={{ flex: 1 }}>
+        <p
+          style={{
+            fontSize: "16px",
+            fontWeight: titleFontWeight,
+            color: titleColor,
+             border: "1 solid gray",
+          }}
+        >
+          {title}
+        </p>
+        <p style={{ fontSize: "14px", color: "#888" }}>{description}</p>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <p style={{ fontSize: "12px", color: "#888" }}>{time}</p>
+        <button
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "red",
+          }}
+          onClick={() => console.log("Delete Notification")}
+        >
+          🗑️
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const NotificationList = ({ notifications, olderNotifications }) => {
+  return (
+    <div>
+      {notifications.map((notification, index) => (
+        <Notification
+          key={index}
+          title={notification.title}
+          description={notification.description}
+          time={notification.time}
+          isOlder={false}
+        />
+      ))}
+      <hr />
+      <p style={{ marginBottom: "8px" }}>Yesterday/Older</p>
+      {olderNotifications.map((notification, index) => (
+        <Notification
+          key={index}
+          title={notification.title}
+          description={notification.description}
+          time={notification.time}
+          isOlder={true}
+        />
+      ))}
+    </div>
+  );
+};
 
 const NotificationComponent = () => {
   const [isPanelVisible, setIsPanelVisible] = useState(false);
@@ -43,7 +115,6 @@ const NotificationComponent = () => {
       description: "Sample text for an older notification.",
       time: "Yesterday",
     },
-   
   ];
 
   return (
@@ -70,125 +141,55 @@ const NotificationComponent = () => {
           }}
         >
           <div style={{ marginBottom: "16px" }}>
-            <text>
-            Notifications
-            
-            </text>
-            <button
-              style={{
-                marginRight: "8px",
-                backgroundColor: "#4CAF50",
-                color: "white",
-                border: "none",
-                padding: "8px",
-                cursor: "pointer",
-                marginLeft:"40%",
-              }}
-            >
-              All
-            </button>
-            <button
-              style={{
-                marginRight: "8px",
-                backgroundColor: "#ccc",
-                color: "black",
-                border: "none",
-                padding: "8px",
-                cursor: "pointer",
-              }}
-            >
-              Unread (2)
-            </button>
-            <button
-              style={{
-                backgroundColor: "orange",
-                color: "white",
-                border: "none",
-                padding: "8px",
-                cursor: "pointer",
-              }}
-            >
-              Mark all as completed
-            </button>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <text>Notifications</text>
+              <div style={{ marginLeft: "auto" }}>
+                <button
+                  style={{
+                    marginRight: "8px",
+                    backgroundColor: "#4CAF50",
+                    color: "white",
+                    border: "none",
+                    padding: "8px",
+                    cursor: "pointer",
+                  }}
+                >
+                  All
+                </button>
+                <button
+                  style={{
+                    marginRight: "8px",
+                    backgroundColor: "#ccc",
+                    color: "black",
+                    border: "none",
+                    padding: "8px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Unread (2)
+                </button>
+                <button
+                  style={{
+                    backgroundColor: "orange",
+                    color: "white",
+                    border: "none",
+                    padding: "8px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Mark all as completed
+                </button>
+              </div>
+            </div>
+            <div style={{ marginTop: "8px",  marginRight:"77%",fontSize: "14px", color:"gray"}}>
+              You've got {notifications.length + olderNotifications.length} Notifications
+            </div>
           </div>
           <hr />
-          <div>
-            <p style={{ marginBottom: "8px" }}>You've got {notifications.length + olderNotifications.length} Notifications</p>
-            {notifications.map((notification, index) => (
-              <div
-                key={index}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "8px",
-                }}
-              >
-                <div>
-                  <p
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: "bold",
-                      color: "green",
-                    }}
-                  >
-                    {notification.title}
-                  </p>
-                  <p style={{ fontSize: "14px", color: "#888" }}>
-                    {notification.description}
-                  </p>
-                  <p style={{ fontSize: "12px", color: "#888" }}>{notification.time}</p>
-                </div>
-                <button
-                  style={{
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    color: "red",
-                  }}
-                >
-                  &#x1F5D1;
-                </button>
-              </div>
-            ))}
-            <hr />
-            <p style={{ marginBottom: "8px" }}>Yesterday/Older</p>
-            {olderNotifications.map((notification, index) => (
-              <div
-                key={index}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "8px",
-                }}
-              >
-                <div>
-                  <p
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: "bold",
-                      color: "gray",
-                    }}
-                  >
-                    {notification.title}
-                  </p>
-                  <p style={{ fontSize: "14px", color: "#888" }}>
-                    {notification.description}
-                  </p>
-                  <p style={{ fontSize: "12px", color: "#888" }}>{notification.time}</p>
-                </div>
-                <button
-                  style={{
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    color: "red",
-                  }}
-                >
-                  &#x1F5D1;
-                </button>
-              </div>
-            ))}
-          </div>
+          <NotificationList
+            notifications={notifications}
+            olderNotifications={olderNotifications}
+          />
         </div>
       )}
     </div>
