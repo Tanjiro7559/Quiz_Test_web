@@ -106,7 +106,8 @@ const CreateAccountForm = () => {
   const [emailDialogOpen, setEmailDialogOpen] = useState(false);
   const [otpDialogOpen, setOtpDialogOpen] = useState(false);
   const [isEmailVerified, setIsEmailVerified] = useState(false);
-   // Send OTP API call
+   
+  // Send OTP API call
    const sendOtp = async () => {
     try {
       await axios.post("http://localhost:3000/api/v1/send-otp/email", {
@@ -115,28 +116,39 @@ const CreateAccountForm = () => {
       alert("OTP sent to your email");
       setEmailDialogOpen(false);
       setOtpDialogOpen(true);
+      
     } catch (error) {
       alert(error);
-      alert("Failed to send OTP");
-      alert(formData.email_id)
+      // alert("Failed to send OTP");
+      // alert(formData.email_id)
     }
   };
 
-  // Verify OTP API call
-  const verifyOtp = async () => {
-    try {
-      await axios.post("http://localhost:3000/api/v1/verify-otp/email", {
-        email_id: formData.email_id,
-        otp,
-      });
+ // Verify OTP API call
+const verifyOtp = async () => {
+  try {
+    
+    console.log("Verifying OTP for email:", formData.email_id, "OTP:", otp);
+
+    const response = await axios.post("http://localhost:3000/api/v1/verify-otp/email", {
+      email_id: formData.email_id, 
+      otp,
+    });
+
+ 
+    if (response && response.status === 200) {
+      console.log("OTP verification response:", response.data); 
       alert("Email verified successfully");
-      setIsEmailVerified(true);
-      setOtpDialogOpen(false);
-    } catch (error) {
-      alert("Invalid OTP");
+      setIsEmailVerified(true); 
+      setOtpDialogOpen(false);  
+      setOpenVerifiedDialog(true);
     }
-  };
-  
+  } catch (error) {
+    console.error("OTP verification failed:", error.response?.data || error.message);
+    
+    alert(error.response?.data?.message || "Invalid OTP. Please try again.");
+  }
+};
 
   return (
     <Box

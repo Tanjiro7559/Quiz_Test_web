@@ -1,16 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginPage.css";
 import LoginLeftsideimage from "../assets/loginImage/Untitled design (1) 3.png";
 
 const LoginPage = ({ onLogin }) => {
-  const handleLoginSubmit = (e) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  const handleLoginSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
-    // Here, you'd validate user credentials and ensure login success.
-    console.log("User logged in"); // Debugging line
+    try {
+      const response = await fetch("http://localhost:3000/api/v1/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email_id: email, password }),
+      });
 
-    // Notify parent about the login
-    onLogin();
+      if (!response.ok) {
+        throw new Error("Failed to log in. Please check your credentials.");
+      }
+
+      const data = await response.json();
+      console.log("Login successful:", data); // Debugging line
+      
+      // Notify parent about the login (if required)
+      if (onLogin) {
+        onLogin();
+      }
+
+      // Optionally handle token or user details here
+      alert("Login successful!");
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+    }
   };
 
   return (
@@ -33,12 +59,21 @@ const LoginPage = ({ onLogin }) => {
               <input
                 type="text"
                 placeholder="Enter your registered email or phone"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
             <div className="form-group">
-              <input type="password" placeholder="Enter your password" />
+              <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
+
+            {error && <div className="error-message">{error}</div>}
 
             <div className="form-remember">
               <div className="remember-me">
